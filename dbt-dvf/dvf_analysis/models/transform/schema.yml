@@ -1,0 +1,17 @@
+
+version: 2
+
+
+models:
+  - name: top_delta_valeur_fonciere
+    description: "biggest delta on same property"
+    
+  - name: output_parquet
+    description: "output previous analyses to one parquet fule"
+    
+  - name: external_source
+    meta:
+      external_location: 'data\dvf*'
+    tables:
+      - name: full_load
+    
