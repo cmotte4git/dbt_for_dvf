@@ -1,5 +1,5 @@
 with source as (
-      select * from  read_PARQUET('/home/cyril/Documents/vscode project/dbt_for_dvf/data/dvf_full.parquet')
+      select * from  {{source ('external_source', 'dvf_full')}}
 ),
 dvf_full as (
     select
@@ -8,4 +8,5 @@ dvf_full as (
     from source
 )
 select * from dvf_full
+  
   

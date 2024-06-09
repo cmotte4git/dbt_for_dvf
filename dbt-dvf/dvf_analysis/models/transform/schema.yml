@@ -7,7 +7,7 @@ models:
     description: "biggest delta on same property"
     
   - name: output_parquet
-    description: "output previous analyses to one parquet fule"
+    description: "output previous analyses to one parquet file"
     
   - name: external_source
     meta:

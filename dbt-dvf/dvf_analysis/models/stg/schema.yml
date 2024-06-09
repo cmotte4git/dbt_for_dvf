@@ -4,6 +4,8 @@ version: 2
 sources:
   - name: external_source
     meta:
-      external_location: '/home/cyril/Documents/vscode project/dbt_for_dvf/data/dvf*'
+      external_location: 'data/{name}.parquet'
     tables:
-      - name: full_load
+      - name: dvf_full
+
+
