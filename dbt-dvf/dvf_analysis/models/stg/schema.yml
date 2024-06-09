@@ -3,9 +3,11 @@ version: 2
 
 sources:
   - name: external_source
+    description: "Create a view for all dvf data stored in a parquet file"
     meta:
       external_location: 'data/{name}.parquet'
     tables:
       - name: dvf_full
+        description: "Create a view for all dvf data stored in a parquet file"
 
 

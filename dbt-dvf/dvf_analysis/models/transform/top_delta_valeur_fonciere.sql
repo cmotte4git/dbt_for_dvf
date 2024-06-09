@@ -3,15 +3,15 @@ SELECT
 id_parcelle,
 date_mutation,
 valeur_fonciere,
-last_valeur,
-valeur_fonciere - last_valeur
+last_valeur_fonciere,
+valeur_fonciere - last_valeur_fonciere as profit
 FROM 
 	(
 	SELECT 
 	id_parcelle,
 	date_mutation,
 	valeur_fonciere,
-	lag(valeur_fonciere) over (partition by id_parcelle, lot1_numero, lot2_numero order by date_mutation asc) AS last_valeur
+	lag(valeur_fonciere) over (partition by id_parcelle, lot1_numero, lot2_numero order by date_mutation asc) AS last_valeur_fonciere
 	FROM 
 			(
 			SELECT id_parcelle, date_mutation,lot1_numero, lot2_numero,
@@ -22,8 +22,8 @@ FROM
 			)
 	ORDER BY id_parcelle
 	)
-WHERE last_valeur <> valeur_fonciere
-ORDER BY (valeur_fonciere - last_valeur) desc
+WHERE last_valeur_fonciere <> valeur_fonciere
+ORDER BY (valeur_fonciere - last_valeur_fonciere) desc
 )
 
 SELECT * FROM dvf 

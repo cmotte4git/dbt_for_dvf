@@ -5,13 +5,33 @@ version: 2
 models:
   - name: top_delta_valeur_fonciere
     description: "biggest delta on same property"
+
+    columns:
+      - name: id_parcelle
+        description: &id_parcelle_desc "unique id for one slot"
+      - name: date_mutation
+        description: &date_mutation_desc "date when slot is sold"
+      - name: valeur_fonciere
+        description: &valeur_fonciere_desc "price slot has been sold"
+      - name: last_valeur_fonciere
+        description: &last_valeur_fonciere_desc "price of previous transaction for each id_parcelle, used to compute profit"
+      - name: profit
+        description: &profit_desc "profit or loss between 2 transactions for each property" 
     
   - name: output_parquet
     description: "output previous analyses to one parquet file"
     
-  - name: external_source
-    meta:
-      external_location: 'data\dvf*'
-    tables:
-      - name: full_load
+    columns:
+      - name: id_parcelle
+        description: *id_parcelle_desc
+      - name: date_mutation
+        description: *date_mutation_desc 
+      - name: valeur_fonciere
+        description: *valeur_fonciere_desc
+      - name: last_valeur_fonciere
+        description: *last_valeur_fonciere_desc
+      - name: profit
+        description: *profit_desc
     
+
+   
